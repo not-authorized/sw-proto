@@ -1,8 +1,8 @@
 import { Heart, Plus } from "lucide-react";
-import { Product } from "../../types/product";
+import { Product } from "@/types/product";
 import {
-  Drawer,
-  DrawerContent,
+  Drawer as DrawerComponent,
+  DrawerContent as DrawerContentComponent,
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
@@ -62,8 +62,8 @@ export function ProductDetailPanel({ product, onClose }: ProductDetailPanelProps
   ];
 
   return (
-    <Drawer open={!!product} onOpenChange={(open) => !open && onClose()} direction="right">
-      <DrawerContent className="h-screen top-0 right-0 left-auto mt-0 w-[90%] rounded-none fixed">
+    <DrawerComponent open={!!product} onOpenChange={(open) => !open && onClose()}>
+      <DrawerContentComponent className="fixed top-0 right-0 h-screen w-full sm:w-[90vw] md:w-[800px] lg:w-[1000px] rounded-none border-l border-border bg-background">
         <ScrollArea className="h-full">
           <div className="mx-auto w-full max-w-5xl">
             {/* Header */}
@@ -77,8 +77,8 @@ export function ProductDetailPanel({ product, onClose }: ProductDetailPanelProps
               {/* Image Gallery */}
               <div className="w-full aspect-[4/3] bg-muted rounded-lg overflow-hidden">
                 <ImageWithFallback
-                  src={product?.imageUrl || ""}
-                  alt={product?.title || "Product"}
+                  src={product?.imageUrl ?? ''}
+                  alt={product?.title ?? 'Product'}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -106,15 +106,16 @@ export function ProductDetailPanel({ product, onClose }: ProductDetailPanelProps
                 {/* Description Tab */}
                 <TabsContent value="description" className="space-y-4 mt-6">
                   <p className="text-muted-foreground leading-relaxed">
-                    This iconic piece combines timeless design with exceptional comfort and craftsmanship. 
-                    Featuring premium materials and meticulous attention to detail, it represents the 
-                    pinnacle of modern furniture design. The ergonomic form provides superior support 
-                    while maintaining an elegant aesthetic that complements any interior space.
+                    This iconic piece combines timeless design with exceptional comfort and
+                    craftsmanship. Featuring premium materials and meticulous attention to detail,
+                    it represents the pinnacle of modern furniture design. The ergonomic form
+                    provides superior support while maintaining an elegant aesthetic that
+                    complements any interior space.
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
-                    Each piece is carefully constructed using traditional techniques merged with 
-                    contemporary manufacturing processes. The result is a durable, beautiful piece 
-                    of furniture that will enhance your space for years to come. Ideal for both 
+                    Each piece is carefully constructed using traditional techniques merged with
+                    contemporary manufacturing processes. The result is a durable, beautiful piece
+                    of furniture that will enhance your space for years to come. Ideal for both
                     residential and commercial applications.
                   </p>
                 </TabsContent>
@@ -123,7 +124,7 @@ export function ProductDetailPanel({ product, onClose }: ProductDetailPanelProps
                 <TabsContent value="specifications" className="mt-6">
                   <div className="space-y-3">
                     {specifications.map((spec, index) => (
-                      <div 
+                      <div
                         key={index}
                         className="flex justify-between py-3 border-b last:border-b-0"
                       >
@@ -141,11 +142,11 @@ export function ProductDetailPanel({ product, onClose }: ProductDetailPanelProps
                       <h4 className="mb-3">Available Finishes</h4>
                       <div className="grid grid-cols-4 gap-4">
                         {finishOptions.map((finish, index) => (
-                          <div 
+                          <div
                             key={index}
                             className="flex flex-col items-center gap-2 p-3 border rounded-lg hover:border-primary cursor-pointer transition-colors"
                           >
-                            <div 
+                            <div
                               className="w-16 h-16 rounded-full border-2 border-border"
                               style={{ backgroundColor: finish.color }}
                             />
@@ -193,7 +194,7 @@ export function ProductDetailPanel({ product, onClose }: ProductDetailPanelProps
             </DrawerFooter>
           </div>
         </ScrollArea>
-      </DrawerContent>
-    </Drawer>
+      </DrawerContentComponent>
+    </DrawerComponent>
   );
 }
