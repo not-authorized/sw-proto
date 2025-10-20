@@ -2,7 +2,6 @@ import { Heart, Plus } from "lucide-react";
 import { Product } from "../../types/product";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
   DrawerFooter,

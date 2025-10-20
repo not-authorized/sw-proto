@@ -10,7 +10,7 @@ import { ProjectDetailScreen } from "./pages/ProjectDetailScreen";
  */
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Layout>
         <Routes>
           <Route path="/" element={<ExploreScreen />} />
