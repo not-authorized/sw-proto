@@ -1,8 +1,8 @@
 import { Heart, Plus } from "lucide-react";
 import { Product } from "@/types/product";
 import {
-  Drawer as DrawerComponent,
-  DrawerContent as DrawerContentComponent,
+  Drawer,
+  DrawerContent,
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
@@ -62,8 +62,8 @@ export function ProductDetailPanel({ product, onClose }: ProductDetailPanelProps
   ];
 
   return (
-    <DrawerComponent open={!!product} onOpenChange={(open) => !open && onClose()}>
-      <DrawerContentComponent className="fixed top-0 right-0 h-screen w-full sm:w-[90vw] md:w-[800px] lg:w-[1000px] rounded-none border-l border-border bg-background">
+    <Drawer open={!!product} onOpenChange={(open: boolean) => !open && onClose()}>
+      <DrawerContent className="fixed top-0 right-0 h-screen w-full sm:w-[90vw] md:w-[800px] lg:w-[1000px] rounded-none border-l border-border bg-background">
         <ScrollArea className="h-full">
           <div className="mx-auto w-full max-w-5xl">
             {/* Header */}
@@ -194,7 +194,7 @@ export function ProductDetailPanel({ product, onClose }: ProductDetailPanelProps
             </DrawerFooter>
           </div>
         </ScrollArea>
-      </DrawerContentComponent>
-    </DrawerComponent>
+      </DrawerContent>
+    </Drawer>
   );
 }
