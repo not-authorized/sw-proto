@@ -16,10 +16,10 @@ import { OfferItem } from "../types/project";
 export function ProjectDetailScreen() {
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
-  
+
   // Find the project from mock data
   const project = mockProjects.find((p) => p.id === projectId);
-  
+
   // State for offer items
   const [offerItems, setOfferItems] = useState<OfferItem[]>([]);
 
@@ -34,7 +34,7 @@ export function ProjectDetailScreen() {
   const handleAddToOffer = (product: Product) => {
     // Check if product is already in offer
     const existingItem = offerItems.find((item) => item.product.id === product.id);
-    
+
     if (existingItem) {
       // Increment quantity
       setOfferItems(
@@ -77,7 +77,7 @@ export function ProjectDetailScreen() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="border-b bg-background sticky top-16 z-10">
+      <div className="border-b bg-background top-16 z-10">
         <div className="container mx-auto px-6 py-6">
           <Button
             variant="ghost"
@@ -119,7 +119,7 @@ export function ProjectDetailScreen() {
 
           {/* Right Column - Offer Summary */}
           <div>
-            <OfferSummary 
+            <OfferSummary
               offerItems={offerItems}
               onPrepareOffer={handlePrepareOffer}
             />

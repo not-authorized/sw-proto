@@ -27,12 +27,21 @@ export function ProductCard({ product, onSelect }: ProductCardProps) {
     action();
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      handleCardClick();
+    }
+  };
+
   return (
     <div
       className="group relative mb-4 break-inside-avoid cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleCardClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
     >
       {/* Product Image */}
       <div className="relative overflow-hidden rounded-lg bg-muted">
